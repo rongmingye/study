@@ -1,0 +1,88 @@
+.stu-condition{
+	width: 100%;
+	height: 100%;
+	box-shadow: 4px 4px 10px #999;
+}
+.stu-condition > h3{
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+
+	background-color: #5bc0de;
+	text-align: center;
+	color: #fff;
+	font-size: 20px;
+	font-weight: normal;
+	letter-spacing: 3px;
+}
+.condition{
+	width: 100%;
+	height: 440px;
+	padding: 10px;
+
+	background-color: #fff;
+	overflow: auto;
+}
+
+/* 一个课时 */
+.lessonTime{
+	width: 100%;
+	margin-bottom: 10px;
+}
+.lessonTime h5{
+	height: 20px;
+	text-align: center;
+	color: #aaa;
+}
+.lessonTime .item{
+	position: relative;
+	width: 100%;
+	border-bottom: 1px solid #ddd;
+}
+.lessonTime .item:hover{
+	border-bottom: 1px solid #5bc0de;
+}
+.item .left{
+	display: inline-block;
+	width: 70%;
+}
+.item .left p{
+	position: absolute;
+	top: 5px;
+	width: 100%;
+	line-height: 20px;
+}
+.item .right{
+	display: inline-block;
+	width: 28%;
+	margin-right: 2%;
+	height: 50px;
+	line-height: 20px;
+}
+.item .right span{
+	display: inline-block;
+	width: 33.33%;
+	text-align: center;
+	cursor: pointer;
+}
+.item .right span:hover{
+	color: #5bc0de;
+}
+
+
+@media only screen and (max-width: 1028px){
+
+.item .left{
+	display: inline-block;
+	width: 49%;
+}
+.item .right{
+	display: inline-block;
+	width: 51%;
+	margin-right: 0%;
+	height: 50px;
+	line-height: 20px;
+	font-size: 10px;
+}
+
+}

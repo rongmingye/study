@@ -1,0 +1,245 @@
+﻿study 学情跟踪
+
+-----------------------  功能      -----------------------------
+功能：
+	1 展示 课程 班级 学生 学情 学情分析 学情设置 学生信息 
+ 	2 标志学生：错误比较多的学生点上标志点(蓝色)，然后该学生是要特殊关照的
+ 	3 学情处理：正确解决，错误，再次出错， 删除条目
+ 	4 学情分析：一个班的正确的人数，正确率
+
+------------------------ skill -------------------------------
+1 react-jsx
+	style属性：键值对对象，键是样式属性, 值是样式的值(要加双引号，可以是js的变量)， 驼峰写法
+	ref: 获取和操作组件内的dom,
+	注释： return里 {/*  */}
+	url: 图片的地址是相对于index.html
+	方法：  组件内的方法声明是 func(){ }, 不需要关键字function
+			组件内的方法调用是用this.func()
+	事件： 驼峰写法onClick
+			onClick={(e)=>{ console.log("1"); }}
+				e.target.value: 被点击dom元素的值
+	constructor()
+		constructor(){ 
+			super(); //继承
+			this.state = { key: value, }
+		}
+
+	this.setState({ key: value, });
+
+
+2 create-react-app
+	npm start: 开发时用的
+	npm built：构建产品用的, 打包成一个静态文件夹， 然后需要node.server配置服务
+	react-script: 是配置的文件
+
+3 react-router-dom
+	{Link, BrowserRouter, Switch, Route, hashRouter}
+	exact: 默认的访问
+	this.poprs.history.push('url'): 跳转页面
+	hashRouter: 使用HashRouter，不要使用BrowserRouter，这样所有的请求都会定位到indehtml这一个页面，
+				服务器端也不需要任何配置了。
+				HashRouter不支持location.key 和 location.state，这两个属性你几乎不会使用到的，
+
+4 redux
+	connect
+		mapStateToProps： 拿到store.state的数据
+		mapDispatchToProps:  dispatch触发行为
+	store.state 全局数据
+	store.dispatch 全局分发行为
+	action：定义行为
+	reducers: 根据dispatch分发的action.type处理store.state
+
+5 mysql
+	一对多建表
+	一对多查询，修改 	
+		...inner join table on ... where ...
+	一个表组合多表的数据
+		insert into table(字段) select (table.字段 ...)  from childTable where ...
+
+6 node server
+ 	proxy: "url" 跨域 
+ 	get/post: "/url" 是服务器地址
+ 	<a href="href">  是客户端地址
+
+7 promise
+	let p = new Promise((resolve,reject)=>{ resolve(1) })
+			.then((val)=>{ console.log(val)});
+
+------------------------  模块 --------------------------------
+
+App组件: 加载的时候获取state.students 表students、cla
+
+侧边 Side 
+   	标题 title
+
+   	课程 Lensson组件
+   		1 根据state.sudents获取课程名 
+   		2 点击课程名：设置目标课程
+
+   	班级 Cla组件
+   		1 根据目标课程筛选出班级名
+   		2 点击班级名：
+   			a 设置目标班级 
+   			b 从state.students里筛选出目标课程该班的学生
+   			c 获取目标课程该班的分析项目 表relation
+   			d 获取目标课程该班的设置项目 表project
+
+   	分析 Anlyse组件
+   		1 跳转到分析页面
+
+   	css
+   		背景颜色 #4c5e70 
+   		标题颜色 #5bc0de
+   		设置颜色 #607283
+   		hover: #3d4f60
+
+主内容 main
+
+	Top 组件 头部
+		search 搜索
+			搜索学生的名字
+			点击搜索按钮触发： 1设置目标学生 2获取目标学生的项目 3跳转到PageStudent页面
+
+		背景颜色： #d5dde4
+
+	Choose 选择
+		choose-back
+			点击返回：跳转到学生列表PageCla页面
+
+		choose-students
+			统计学生的人数：根据目标课程，目标班级，state.sdutents
+
+	article
+		 	
+		PageCla 首页
+			studentsList 一个班的学生列表
+			Student组件 一个学生
+					组件被点击的时候： 1设置目标学生 2获取目标学生的项目 3跳转到PageStudent页面
+
+		PageStudent 具体学生页面
+
+			StuInfo组件 学生信息： 目标学生名字 目标学生id 目标课程 进度
+
+			StuHistory组件 历史课程列表：
+				HistoryLesson组件 一个历史课程: 课程名称 指导老师 成绩 排名 进度条
+				progress #5cb85c
+
+			StuCondition组件 学情： 项目 项目的问题
+				目标学生的项目
+				先筛选出有几个项目的数组，每个项目是有n个问题的数组
+				Project组件 一个项目：里面有n个问题
+
+					问题数据处理：
+						表relation的resolve默认标记为a
+						1 点击正确： 不出现, 表relation的resolve标记为yes
+						2 点击错误： 出现，表relation的resolve标记为no
+						3 点击删除：不出现，表relation删除这个问题，根据问题的id
+						4 点击后，a重新获取目标学生的项目 表relation; b重新获取要分析项目 表relation
+
+				
+		PageAnlyse 目标课程 目标班级的目标项目
+			anlyseTitle 
+			anlyseList 目标项目的问题列表
+				拿到state.curProjects，点击select选择项目名展示该项目的问题
+				Question 组件：每个问题的展示，问题内容 正确人数，正确的百分比(Progeress)
+
+		PageSetProject 设置的项目
+			拿到state.setProjects
+			setProject-left  #21b8c6 项目名
+			setProject-right #fff 项目的问题列表
+
+-------------------------  reducer -----------------------------
+
+state
+	cla, 目标班级
+	lesson, 目标课程
+	students, 所有学生
+	curStudents, 目标课程和班级的学生
+	defaultCla,
+	defaultLesson, 
+	curProjects,  目标课程和班级的分析项目
+	setProjects,  目标课程和班级设置的项目
+	targetStudentProjects, 目标学生的项目
+	targetStudent, 目标学生 
+
+action
+	getStudent 获取学生
+	selectLesson 选择目标课程
+	selectCla  选择目标班级
+
+	setDefaultCla
+	setDefaultLessson
+	setCurStudents  设置目标课程班级的学生，要点击班级和第一次加载才有
+
+	getCurProjects 获取目标课程和目标班级的项目分析
+	getSetProjects 获取目标课程和目标班级的设置项目
+
+	setTargetStudent 设置目标学生
+	setTargetStudentProjects 设置目标学生的项目
+
+
+
+
+----------------------------------- mysql ---------------------------------
+
+mysql
+	表
+		students的字段：nid studentName studentId
+
+		cla的字段：cla_id cla_name lesson_name
+
+		project的字段：project_id project_name question_name cla_id
+			
+		relation的字段：id nid cla_id lesson_name cla_name student_id student_name project_id project_name question_name resolve
+
+
+	1 excel表里做好表字段和数据，保存为.csv格式，然后改为utf8编码
+	2 phpmyadmin导入.csv文件，格式为csv use local data, 分隔符用"," ，然后勾上use local keyword
+
+	建立数据库, 建立表 utf8
+		创建外键：ALTER TABLE 表名 ADD FOREIGN KEY (字段名) REFERENCES 表名(字段名);
+		删除外键: alter table 表名 drop foreign key lesson_id;
+
+	relation表添加数据
+		insert into relation(nid, cla_id, lesson_name, cla_name, student_id, student_name, project_id, project_name, question_name) select student.nid, student.cla_id, cla.lesson_name, cla.cla_name, student.student_id, student.student_name, project.project_id, project.project_name, project.question_name from student, project, cla where student.cla_id = project.cla_id and student.cla_id = cla.cla_id;
+
+	清除数据表
+		delete from relation;
+
+mysql.js
+
+	获取所有学生 /getInit：  "select * from student inner join cla on student.cla_id = cla.cla_id";
+
+	获取目标课程和班级的分析项目 /getCurProjects：
+		"select * from relation  where lesson_name = '"+req.body.lesson +"' and cla_name = '"+req.body.cla+"'";
+
+	获取目标课程和班级的设置项目 /getSetProjects：
+		"select * from project inner join cla on project.cla_id = cla.cla_id where lesson_name = '" +req.body.lesson 
+			+"' and cla_name = '"+req.body.cla+"'";
+
+	获取目标课程班级学生的所有项目: "select * from relation where lesson_name='"+req.body.lesson
+									+"' and cla_name='"+req.body.cla+"' and student_name='"+req.body.student_name+"'";
+
+    问题处理 /submitQuestionHandle: "update relation set resolve ='"+req.body.resolve+"' where id="+req.body.id;
+    问题删除 /submitQuestionDelete: "delete * from relation where id="+req.body.id;
+
+
+----------------- github -----------------------------
+上传项目：
+	github客户端 -> new repository -> 填写名字, 地址 -> public -> 把写好的项目复制到该地址
+	.gitignore 忽略文件/文件夹, 可以同一个目录有一个.gitignore, 也可以是一个全局的.gitignore
+
+github pages:
+	https://rongmingye.github.io/study/
+	settings -> github pages
+	静态页面, 不能操作数据库，java, php
+
+------------------- aliyun -------------------------------
+发布到阿里云
+	server.js
+		host: 0.0.0.0
+		port: 3000
+	mysql.js:
+		host: 0.0.1
+	导进study1.sql到阿里云
+

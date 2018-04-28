@@ -1,0 +1,101 @@
+.stu-history{
+	width: 100%;
+	height: 70%;
+}
+.stu-history h3{
+	width: 100%;
+	height: 10%;
+	font-size: 16px;
+	padding: 10px 0 0 10px;
+}
+.stu-history .history-list{
+	width: 100%;
+	height: 90%;
+	overflow: auto;
+}
+
+.history-lesson{
+	width: 100%;
+	height: 80px;
+	padding: 10px;
+	margin: 0 0 10px 0;
+	background-color: #fff;
+}
+.history-lesson .f-left{
+	width: 50%;
+	line-height: 30px;
+}
+.history-lesson .f-left h5{
+	font-size: 16px;
+}
+
+.history-lesson .f-right{
+	width: 50%;
+	line-height: 30px;
+}
+.history-lesson .f-right p{
+	display: inline-block;
+	width: 50%;
+}
+.history-lesson .f-right div{
+	margin-top: 10px;
+}
+
+/* 横屏*/
+@media only screen and (max-width: 1028px){
+.history-lesson{
+	width: 100%;
+	height: 80px;
+	padding: 5px 10px;
+	margin: 0 0 10px 0;
+	background-color: #fff;
+}
+.history-lesson .f-left{
+	width: 60%;
+	line-height: 24px;
+}
+.history-lesson .f-left h5{
+	font-size: 14px;
+}
+
+.history-lesson .f-right{
+	width: 40%;
+	line-height: 24px;
+}
+.history-lesson .f-right p{
+	display: inline-block;
+	width: 100%;
+}
+.history-lesson .f-right div{
+	margin-top: 0px;
+}
+
+}
+
+
+/* 竖屏 */
+@media only screen and (max-width:768px){
+.history-lesson .f-left{
+	width: 50%;
+	line-height: 24px;
+}
+.history-lesson .f-left h5{
+	font-size: 14px;
+}
+.history-lesson .f-left span{
+	padding-left: 10px;
+}
+
+.history-lesson .f-right{
+	width: 50%;
+	line-height: 24px;
+}
+.history-lesson .f-right p{
+	display: inline-block;
+	width: 100%;
+}
+.history-lesson .f-right div{
+	margin-top: 0px;
+}
+
+}

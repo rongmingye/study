@@ -1,0 +1,24 @@
+.student{
+	display: inline-block;
+	width: 200px;
+	height: 72px;
+	border-bottom: 2px solid #fff;
+	margin: 0 20px 10px 0;
+}
+.student:hover{
+	border-bottom: 2px solid #5bc0de;
+}
+.student .inline{
+	padding: 0 0 0 10px;
+}
+.student strong{
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	border-radius: 8px;
+	background-color: #999;
+}
+
+.student .active{
+	background-color: #5bc0de;
+}

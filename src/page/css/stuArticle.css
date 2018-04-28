@@ -1,0 +1,11 @@
+.article-left{
+	width: 30%;
+	height: 100%;
+	/*border: 1px solid #999;*/
+}
+.article-right{
+	width: 69%;
+	height: 100%;
+	margin: 0 0 0 1%;
+	/*border: 1px solid #999;*/
+}

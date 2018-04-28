@@ -1,0 +1,47 @@
+.setPorject-left{
+	width: 30%;
+	height: 100%;
+	padding: 10px;
+	background-color: #21b8c6;
+}
+.setProject-right{
+	width: 70%;
+	height: 100%;
+	padding: 10px;
+	background-color: #fff;
+}
+
+.article ul{
+	height: 95%;
+	overflow: auto;
+}
+.article button{
+	width: 100px;
+	height: 5%;
+	
+	border-radius: 5px;
+	border: 0;
+	text-align: center;
+}
+
+
+li{
+	cursor: pointer;
+	letter-spacing: 1px;
+}
+.addForm{
+	display: none;
+}
+.add-question-btn{
+	display: none;
+}
+
+input{
+	height: 24px;
+	line-height: 24px;
+}
+input[type='button']{
+	padding: 0 10px;
+	border: 0;
+	border-radius: 5px;
+}
