@@ -18,7 +18,7 @@ class App extends React.Component {
                 <BrowserRouter >
                     <Switch>
                         <Route exact path='/' component={PageLogin} />
-                        <Route exact path='/PageCla' component={PageCla} />
+                        <Route path='/PageCla' component={PageCla} />
                         <Route path ='/pageStudent' component={PageStudent} />
                         <Route path ='/pageAnlyse' component={PageAnlyse} />
                         <Route path ='/pageSetProject' component={PageSetProject} />

@@ -4,8 +4,8 @@ var app = express();
 var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser({extended: false});
 
-var  router = require('./serve/router.js');
-var  query = require('./mysql.js');
+var router = require('./serve/router.js');
+var query = require('./mysql.js');
 
 router(app);
 app.use(express.static('build'));

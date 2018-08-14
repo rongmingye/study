@@ -14,7 +14,7 @@ class PageCla extends React.Component {
 
     // 获取初始的学生
     componentDidMount(){
-    	console.log(this.props.history.location);
+
         $.ajax({
             url: "/getInit",
             type: "post",

@@ -5,6 +5,8 @@
 
 # testing
 /coverage
+/文档.txt
+/log.txt
 
 # production
 
