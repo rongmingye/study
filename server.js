@@ -1,18 +1,21 @@
 var express = require('express'); // 快速构建服务器
 var app = express();
 
+var router = require('./serve/router.js');
+var query = require('./mysql.js');
+
 var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser({extended: false});
 
-var  router = require('./serve/router.js');
-var  query = require('./mysql.js');
+var developState = "/public"; //开发时是"/public", 打包后用"/build"
+
+app.use(express.static(__dirname + developState)); //views路径
 
 router(app);
-app.use(express.static('build'));
 
 //获取默认页面
 app.get('*', function(req, res){
-    res.sendFile(__dirname+'/build/'+'index.html');
+    res.sendFile(__dirname+developState+'/index.html');
 });
 
 var server = app.listen(3001, '0.0.0.0', function(){
