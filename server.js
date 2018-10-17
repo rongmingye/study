@@ -1,3 +1,5 @@
+// 项目创建时间 2018/04/22
+
 var express = require('express'); // 快速构建服务器
 var app = express();
 
